@@ -19,6 +19,10 @@
   width: 675px;
 }
 
+.input-container {
+  display: flex;
+}
+
 #trybewarts-forms-logo {
   height: 500px;
 }
