@@ -1,10 +1,16 @@
 const email = document.getElementById('email');
 const senha = document.getElementById('senha');
 const btn = document.getElementById('form-btn');
+const inputName = document.getElementById('input-name');
+const inputLastName = document.getElementById('input-lastname');
+const inputEmail = document.getElementById('input-email');
+const house = document.getElementById('house');
+const family = document.getElementsByClassName('family');
 const agreement = document.getElementById('agreement');
 const submitBtn = document.getElementById('submit-btn');
 const textArea = document.getElementById('textarea');
 const counter = document.getElementById('counter');
+const formDataText = document.getElementById('form-data-text');
 counter.innerText = 500;
 
 const login = () => {
@@ -25,13 +31,19 @@ const submitForm = () => {
   }
 };
 
-
 btn.addEventListener('click', login);
 agreement.addEventListener('click', submitForm);
 
 textArea.addEventListener('keyup', () => {
-
-  let caracteres = textArea.value.split('');
+  const caracteres = textArea.value.split('');
   counter.innerText = 500 - caracteres.length;
+});
 
+submitBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  for (let index = 0; index < family.length; index += 1) {
+    if (family[index].checked) {
+      console.log(family[index].value);
+    }
+  }
 });
