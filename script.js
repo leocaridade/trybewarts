@@ -15,13 +15,12 @@ const login = () => {
 };
 
 const submitForm = () => {
-  if(agreement.checked === true){
+  if (agreement.checked === true) {
     submitBtn.disabled = false;
-  } else{
+  } else {
     submitBtn.disabled = true;
   }
 };
 
 btn.addEventListener('click', login);
 agreement.addEventListener('click', submitForm);
-
