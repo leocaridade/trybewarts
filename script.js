@@ -31,6 +31,16 @@ const submitForm = () => {
   }
 };
 
+const getFamily = () => {
+  for (let index = 0; index < family.length; index += 1) {
+
+    if (family[index].checked) {
+      return family[index].value;
+    }
+
+  }
+};
+
 btn.addEventListener('click', login);
 agreement.addEventListener('click', submitForm);
 
@@ -41,9 +51,5 @@ textArea.addEventListener('keyup', () => {
 
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  for (let index = 0; index < family.length; index += 1) {
-    if (family[index].checked) {
-      console.log(family[index].value);
-    }
-  }
+  getFamily();
 });
