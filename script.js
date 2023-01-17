@@ -3,6 +3,9 @@ const senha = document.getElementById('senha');
 const btn = document.getElementById('form-btn');
 const agreement = document.getElementById('agreement');
 const submitBtn = document.getElementById('submit-btn');
+const textArea = document.getElementById('textarea');
+const counter = document.getElementById('counter');
+counter.innerText = 500;
 
 const login = () => {
   const emailLogin = email.value;
@@ -22,5 +25,13 @@ const submitForm = () => {
   }
 };
 
+
 btn.addEventListener('click', login);
 agreement.addEventListener('click', submitForm);
+
+textArea.addEventListener('keyup', () => {
+
+  let caracteres = textArea.value.split('');
+  counter.innerText = 500 - caracteres.length;
+
+});
