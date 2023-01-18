@@ -37,32 +37,29 @@ const submitForm = () => {
 
 const getFamily = () => {
   for (let index = 0; index < family.length; index += 1) {
-
     if (family[index].checked) {
       return family[index].value;
     }
-
   }
 };
 
 const getSubject = () => {
-  const  subjectList = [];
-  for(let index = 0; index < subject.length; index += 1) {
-    if(subject[index].checked){
+  const subjectList = [];
+  for (let index = 0; index < subject.length; index += 1) {
+    if (subject[index].checked) {
       subjectList.push(subject[index].value);
     }
   }
-
   return subjectList;
-}
+};
 
 const getGrade = () => {
-  for(let index = 0; index < grade.length; index += 1){
-    if(grade[index].checked){
+  for (let index = 0; index < grade.length; index += 1) {
+    if (grade[index].checked) {
       return grade[index].value;
     }
   }
-}
+};
 
 btn.addEventListener('click', login);
 agreement.addEventListener('click', submitForm);
@@ -74,17 +71,21 @@ textArea.addEventListener('keyup', () => {
 
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  const family = getFamily();
+  const thisFamily = getFamily();
   const subjects = getSubject();
-  const grade = getGrade();
+  const thisGrade = getGrade();
   const text = textArea.value;
-
   const joinedSubjects = subjects.join(', ');
 
   formDataText.innerText = `
-    Nome: ${inputName.value} ${inputLastName.value}, Email: ${inputEmail.value}, Casa: ${house.value}, Família: ${family}, Matérias: ${joinedSubjects}, Avaliação: ${grade}, Observações: ${text}`;
+    Nome: ${inputName.value} ${inputLastName.value}, 
+    Email: ${inputEmail.value}, 
+    Casa: ${house.value}, 
+    Família: ${thisFamily}, 
+    Matérias: ${joinedSubjects}, 
+    Avaliação: ${thisGrade}, 
+    Observações: ${text}`;
 
-    evaluationForm.style.display = 'none';
-    formData.style.display = 'flex';
-
+  evaluationForm.style.display = 'none';
+  formData.style.display = 'flex';
 });
