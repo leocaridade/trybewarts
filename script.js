@@ -1,15 +1,19 @@
 const email = document.getElementById('email');
 const senha = document.getElementById('senha');
 const btn = document.getElementById('form-btn');
+const evaluationForm = document.getElementById('evaluation-form');
 const inputName = document.getElementById('input-name');
 const inputLastName = document.getElementById('input-lastname');
 const inputEmail = document.getElementById('input-email');
 const house = document.getElementById('house');
 const family = document.getElementsByClassName('family');
+const subject = document.getElementsByClassName('subject');
+const grade = document.getElementsByClassName('grade');
 const agreement = document.getElementById('agreement');
 const submitBtn = document.getElementById('submit-btn');
 const textArea = document.getElementById('textarea');
 const counter = document.getElementById('counter');
+const formData = document.getElementById('form-data');
 const formDataText = document.getElementById('form-data-text');
 counter.innerText = 500;
 
@@ -41,6 +45,25 @@ const getFamily = () => {
   }
 };
 
+const getSubject = () => {
+  const  subjectList = [];
+  for(let index = 0; index < subject.length; index += 1) {
+    if(subject[index].checked){
+      subjectList.push(subject[index].value);
+    }
+  }
+
+  return subjectList;
+}
+
+const getGrade = () => {
+  for(let index = 0; index < grade.length; index += 1){
+    if(grade[index].checked){
+      return grade[index].value;
+    }
+  }
+}
+
 btn.addEventListener('click', login);
 agreement.addEventListener('click', submitForm);
 
@@ -51,5 +74,17 @@ textArea.addEventListener('keyup', () => {
 
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  getFamily();
+  const family = getFamily();
+  const subjects = getSubject();
+  const grade = getGrade();
+  const text = textArea.value;
+
+  const joinedSubjects = subjects.join(', ');
+
+  formDataText.innerText = `
+    Nome: ${inputName.value} ${inputLastName.value}, Email: ${inputEmail.value}, Casa: ${house.value}, Família: ${family}, Matérias: ${joinedSubjects}, Avaliação: ${grade}, Observações: ${text}`;
+
+    evaluationForm.style.display = 'none';
+    formData.style.display = 'flex';
+
 });
